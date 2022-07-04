@@ -4,6 +4,7 @@ import com.jwg.jwgapi.logger;
 
 import java.io.IOException;
 
+import static com.jwg.LauncherKt.start;
 import static com.jwg.jwgapi.parseVersion.versionInt;
 
 public class Main {
@@ -22,6 +23,6 @@ public class Main {
         init.Init();
         long initTook = System.currentTimeMillis()-initStartTime;
         logger.log(logFile, versionInt(version), project, 0, "Done! Took "+initTook+"ms");
-        launcher.start();
+        start();
     }
 }

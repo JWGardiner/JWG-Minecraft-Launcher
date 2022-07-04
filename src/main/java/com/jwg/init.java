@@ -21,7 +21,7 @@ public class init {
     static boolean needsSetup = false;
     static boolean hasWifiConnection = false;
     static boolean updateModloader = false;
-    static JFrame frame = new JFrame();
+
     public static void preInit() {
         if(!sysinfo.getOs().equals("linux") && !sysinfo.getOs().equals("windows")) {
             errorHandler.handleError("Unsupported OS: The program might still work. Proceed with caution. Logs from your installation are invalid.", "JWG MC Pre-Init", versionInt(version), logFile);

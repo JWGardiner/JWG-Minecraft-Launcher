@@ -13,7 +13,6 @@ import java.nio.file.Paths;
 
 import static com.jwg.Main.*;
 import static com.jwg.Main.project;
-import static com.jwg.init.frame;
 import static com.jwg.jwgapi.parseVersion.versionInt;
 import static com.jwg.jwgapi.swingUtils.configureJframe;
 import static java.lang.System.exit;
@@ -50,7 +49,6 @@ public class autoSetup {
         }
 
         logger.log(logFile, versionInt(version), project, 0, "Created all directories!");
-        configureJframe(frame, 700, 500, 500, 500, false, true);
         int reply = JOptionPane.showConfirmDialog(null, "Do you want to check for updated modloaders? (This only appears once, it's recommended to check for updated modloaders!)", "Update Modloaders?", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
             writeFile.overwriteFile("modloaderUpdate.cfg", "autoUpdate=true");

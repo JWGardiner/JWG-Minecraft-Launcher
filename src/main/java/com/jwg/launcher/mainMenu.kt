@@ -1,11 +1,11 @@
-package com.jwg
-
+import java.awt.event.ActionListener
 import javax.swing.JButton
+import javax.swing.JDialog
 import javax.swing.JFrame
 import javax.swing.UIManager
 
 
-fun start() {
+fun mainMenu() {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
     val isLoggedIn = false
     var loginText = ""
@@ -31,5 +31,8 @@ fun start() {
         window.add(settings)
         window.add(login)
     }
+    settings.addActionListener(ActionListener { 
+        settings(visible = true)
+    })
 
 }

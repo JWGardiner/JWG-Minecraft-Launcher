@@ -1,8 +1,6 @@
 package com.jwg;
 
-import com.jwg.jwgapi.errorHandler;
 import com.jwg.jwgapi.logger;
-import com.jwg.jwgapi.sysinfo;
 
 import java.io.IOException;
 
@@ -18,10 +16,10 @@ public class Main {
         logger.StartLogger(logFile);
         logger.log(logFile, versionInt(version), project, 0, "Starting JWG-Minecraft Launcher...");
         logger.log(logFile, versionInt(version), project, 0, "Starting Pre-Initialisation");
-        launcher.preInit();
+        init.preInit();
         logger.log(logFile, versionInt(version), project, 0, "Pre Initialisation Finished!");
         logger.log(logFile, versionInt(version), project, 0, "Initialising...");
-        launcher.Init();
+        init.Init();
         long initTook = System.currentTimeMillis()-initStartTime;
         logger.log(logFile, versionInt(version), project, 0, "Done! Took "+initTook+"ms");
         launcher.start();

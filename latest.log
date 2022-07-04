@@ -4,7 +4,7 @@
 [INFO] (JWG-MC-Launcher, 1) User is connected to WiFi.
 [INFO] (JWG-MC-Launcher, 1) Pre Initialisation Finished!
 [INFO] (JWG-MC-Launcher, 1) Initialising...
-[WARN] (JWG-MC-Launcher, 1) Couldn't create modloader update file
+[INFO] (JWG-MC-Launcher, 1) Created check modloader update file
 [INFO] (JWG-MC-Launcher, 1) Starting automatic setup...
 [INFO] (JWG-MC-Launcher, 1) Created profiles directory.
 [INFO] (JWG-MC-Launcher, 1) Created templates/vanilla directory.
@@ -12,4 +12,34 @@
 [INFO] (JWG-MC-Launcher, 1) Created templates/fabric directory.
 [INFO] (JWG-MC-Launcher, 1) Created templates/forge directory.
 [INFO] (JWG-MC-Launcher, 1) Created templates/quilt directory.
-[INFO] (JWG-MC-Launcher, 1) Done! Took 3736ms
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/c0898ec7c6a5a2eaa317770203a1554260699994/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/2e9a3e3107cca00d6bc9c97bf7d149cae163ef21/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/7e46fb47609401970e2818989fa584fd467cd036/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/d49eb6caed53d23927648c97451503442f9e26fd/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/8d9b65467c7913fcf6f5b2e729d44a1e00fde150/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/37fd3c903861eeff3bc24b71eed48f828b5269c8/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/1952d94a0784e7abda230aae6a1e8fc0522dba99/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/1321521b2caf934f7fc9665aab7e059a7b2bfcdf/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/653e97a2d1d76f87653f02242d243cdee48a5144/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/c9abbe8ee4fa490751ca70635340b7cf00db83ff/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/228fdf45541c4c2fe8aec4f20e880cb8fcd46621/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/e3f78cd16f9eb9a52307ed96ebec64241cc5b32d/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/8b11614bea9293592a947ea8f4fd72981ea66677/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/7b07fd09d1e3aae1bc7a1304fedc73bfe5d81800/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/8c325a0c5bd674dd747d6ebaa4c791fd363ad8a9/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/af100b34ec7ef2b8b9cf7775b544d21d690dddec/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/ca6c5a139045967229975c0c0b7f93e78b4314c2/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/55ba86ddcbc3579397f41910463ffd4056e1e523/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/7a762a59345c13af7d87111207a93f5a8607f6c0/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/8de235e5ec3a7fce168056ea395d21cbdec18d7c/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/c0b970952cdd279912da384cdbfc0c26e6c6090b/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/0f275bc1547d01fa5f56ba34bdc87d981ee12daf/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/83385d346cf7f97d1e447b888750fb88e9928b93/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/909823f9c467f9934687f136bc95a667a0d19d7f/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/db5aa600f0b0bf508aaf579509b345c4e34087be/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/3870888a6c3d349d3771a3e9d16c9bf5e076b908/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/d722504db9de2b47f46cc592b8528446272ae648/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/e80d9b3bf5085002218d4be59e668bac718abbc6/client.jar
+[INFO] (JWG-MC-Launcher, 1) Downloading Client jar: https://launcher.mojang.com/v1/objects/b679fea27f2284836202e9365e13a82552092e5d/client.jar
+[INFO] (JWG-MC-Launcher, 1) Done! Took 65674ms

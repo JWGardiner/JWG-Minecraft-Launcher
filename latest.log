@@ -4,12 +4,12 @@
 [INFO] (JWG-MC-Launcher, 1) User is connected to WiFi.
 [INFO] (JWG-MC-Launcher, 1) Pre Initialisation Finished!
 [INFO] (JWG-MC-Launcher, 1) Initialising...
-[INFO] (JWG-MC-Launcher, 1) Created check modloader update file
+[WARN] (JWG-MC-Launcher, 1) Couldn't create modloader update file
 [INFO] (JWG-MC-Launcher, 1) Starting automatic setup...
 [INFO] (JWG-MC-Launcher, 1) Created profiles directory.
 [INFO] (JWG-MC-Launcher, 1) Created templates/vanilla directory.
+[INFO] (JWG-MC-Launcher, 1) Created all directories!
 [INFO] (JWG-MC-Launcher, 1) Created templates/fabric directory.
 [INFO] (JWG-MC-Launcher, 1) Created templates/forge directory.
 [INFO] (JWG-MC-Launcher, 1) Created templates/quilt directory.
-[INFO] (JWG-MC-Launcher, 1) Created all directories!
-[INFO] (JWG-MC-Launcher, 1) Done! Took 1450ms
+[INFO] (JWG-MC-Launcher, 1) Done! Took 3736ms

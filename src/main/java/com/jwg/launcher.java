@@ -3,10 +3,12 @@ package com.jwg;
 import com.jwg.jwgapi.*;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -51,7 +53,7 @@ public class launcher {
             }
         }
     }
-    public static void Init() {
+    public static void Init() throws IOException {
         if (needsSetup) {
             try {
                 File checkUpdateModldr = new File("modloaderUpdate.cfg");
@@ -91,7 +93,38 @@ public class launcher {
                 writeFile.overwriteFile("modloaderUpdate.cfg", "autoUpdate=false");
             }
 
-            
+            URL versions = new URL("https://raw.githubusercontent.com/JWGardiner/JWG-Minecraft-Launcher/main/versions.md");
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(versions.openStream()));
+
+            String versionLine;
+            int i = 0;
+            while ((versionLine = in.readLine()) != null)  {
+                i = i++;
+                try {
+                    File file = new File("launcher/templates/vanilla/"+versionLine);
+                    if (!file.exists()) {
+                        try {
+                            Path path = Paths.get("launcher/templates/vanilla/"+versionLine);
+                            Files.createDirectories(path);
+
+                        } catch (IOException e) {
+                            errorHandler.handleError(e+ " Fatal Crash", "JWG MC Pre-Init", versionInt(version), logFile);
+                            exit(0);
+                        }
+                        URL website = new URL("https://launcher.mojang.com/v1/objects/c0898ec7c6a5a2eaa317770203a1554260699994/client.jar");
+                        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+                        FileOutputStream fos = new FileOutputStream("launcher/templates/vanilla/"+versionLine+"/"+versionLine+".jar");
+                        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                    }
+
+                } catch(Exception e) {
+                    errorHandler.handleError(e+ " Fatal Crash", "JWG MC Pre-Init", versionInt(version), logFile);
+                    exit(0);
+                }
+            }
+            in.close();
+
         }
         try {
             String modloaderUpdate = readFile.fileRead("modloaderUpdate.cfg");

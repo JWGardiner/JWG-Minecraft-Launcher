@@ -4,6 +4,8 @@ import com.jwg.jwgapi.errorHandler;
 import com.jwg.jwgapi.logger;
 import com.jwg.jwgapi.sysinfo;
 
+import java.io.IOException;
+
 import static com.jwg.jwgapi.parseVersion.versionInt;
 
 public class Main {
@@ -11,7 +13,7 @@ public class Main {
     public static String project = "JWG-MC-Launcher";
     public static String version = "0.0.1";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         long initStartTime = System.currentTimeMillis();
         logger.StartLogger(logFile);
         logger.log(logFile, versionInt(version), project, 0, "Starting JWG-Minecraft Launcher...");

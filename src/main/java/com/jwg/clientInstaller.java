@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static com.jwg.launcher.LauncherKt.start;
 import static com.jwg.Main.*;
 import static com.jwg.jwgapi.parseVersion.versionInt;
 import static java.lang.System.exit;
@@ -41,8 +42,8 @@ public class clientInstaller {
                 }
 
             } catch(Exception e) {
-                errorHandler.handleError(e+ " Fatal Crash", "JWG MC Pre-Init", versionInt(version), logFile);
-                exit(0);
+                errorHandler.handleError("Couldn't update: No connection? Starting anyway..", "JWG MC Pre-Init", versionInt(version), logFile);
+                start();
             }
 
             //Download the client jar

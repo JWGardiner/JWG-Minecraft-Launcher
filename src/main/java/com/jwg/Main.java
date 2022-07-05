@@ -4,7 +4,7 @@ import com.jwg.jwgapi.logger;
 
 import java.io.IOException;
 
-import static com.jwg.LauncherKt.start;
+import static com.jwg.launcher.LauncherKt.start;
 import static com.jwg.jwgapi.parseVersion.versionInt;
 
 public class Main {

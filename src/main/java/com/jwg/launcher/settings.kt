@@ -1,3 +1,4 @@
+import com.jwg.jwgapi.readFile.fileReadLine
 import com.jwg.jwgapi.writeFile.overwriteFile
 import javax.swing.JButton
 import javax.swing.JFrame
@@ -14,13 +15,13 @@ fun settings(visible: Boolean) {
     val saveToFile = JButton("Save to file")
 
     val crackedTF = JButton("Is Cracked? False")
-    val crackedUsernameINP = JTextField("Cracked Name", 13)
+    val crackedUsernameINP = JTextField(fileReadLine("settings.cfg", 3).substring(11), 13)
 
-    val minRamAlloc = JTextField("512M", 15)
-    val maxRamAlloc = JTextField("2G", 15)
+    val minRamAlloc = JTextField(fileReadLine("settings.cfg", 5).substring(12), 15)
+    val maxRamAlloc = JTextField(fileReadLine("settings.cfg", 4).substring(12), 15)
     val jrePath = JTextField(System.getProperty("java.home"), 15)
     val enableCustomJREargs = JButton("Custom Args? False")
-    val customJREargs = JTextField("Args", 15)
+    val customJREargs = JTextField(fileReadLine("settings.cfg", 7).substring(11), 15)
     val startPopupDisable = JButton("Update Popup? True")
 
     JFrame().also { settingsMenu ->

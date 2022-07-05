@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 import static com.jwg.Main.*;
 import static com.jwg.Main.project;
 import static com.jwg.jwgapi.parseVersion.versionInt;
+import static com.jwg.jwgapi.readFile.fileReadLine;
 import static com.jwg.jwgapi.swingUtils.configureJframe;
 import static com.jwg.jwgapi.writeFile.overwriteFile;
 import static java.lang.System.exit;
@@ -45,7 +46,7 @@ public class autoSetup {
         }
         overwriteFile(
                 "settings.cfg",
-                "startPopup=true\ncracked=false\nenableCustomJVM=false\ncrackedIGN=null\nminRamAlloc=2G\nmaxRamAlloc=512M\njrePath="+System.getProperty("java.home")+"\ncustomArgs=null"
+                "startPopup=true\ncracked=false\nenableCustomJVM=false\ncrackedIGN=Cracked IGN\nminRamAlloc=2G\nmaxRamAlloc=512M\njrePath="+System.getProperty("java.home")+"\ncustomArgs=Custom Args"
         );
         logger.log(logFile, versionInt(version), project, 0, "Starting automatic setup...");
         try {
@@ -68,9 +69,9 @@ public class autoSetup {
         logger.log(logFile, versionInt(version), project, 0, "Created all directories!");
         int reply = JOptionPane.showConfirmDialog(null, "Do you want to check for updated modloaders? (This only appears once, it's recommended to check for updated modloaders!)", "Update Modloaders?", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
-            overwriteFile("modloaderUpdate.cfg", "autoUpdate=true");
+            overwriteFile("modloaderUpdate.cfg", "autoUpdate=true\n"+fileReadLine("settings.cfg", 1)+"\n"+fileReadLine("settings.cfg", 2)+"\n"+fileReadLine("settings.cfg", 3)+"\n"+fileReadLine("settings.cfg", 4)+"\n"+fileReadLine("settings.cfg", 5)+"\n"+fileReadLine("settings.cfg", 6)+"\n"+fileReadLine("settings.cfg", 7));
         } else {
-            overwriteFile("modloaderUpdate.cfg", "autoUpdate=false");
+            overwriteFile("modloaderUpdate.cfg", "autoUpdate=false\n"+fileReadLine("settings.cfg", 1)+"\n"+fileReadLine("settings.cfg", 2)+"\n"+fileReadLine("settings.cfg", 3)+"\n"+fileReadLine("settings.cfg", 4)+"\n"+fileReadLine("settings.cfg", 5)+"\n"+fileReadLine("settings.cfg", 6)+"\n"+fileReadLine("settings.cfg", 7));
         }
     }
 }

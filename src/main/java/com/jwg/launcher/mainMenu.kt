@@ -4,10 +4,13 @@ import javax.swing.*
 fun mainMenu() {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
     val isLoggedIn = false
+
     var loginText = ""
     val username = "JWG_"
 
     val settings = JButton("⚙️")
+    val profiles = JButton("+")
+
     loginText = if (isLoggedIn){
         username
     } else {
@@ -24,12 +27,20 @@ fun mainMenu() {
         window.isResizable = false
 
         settings.setBounds(0,0,35,35)
+        profiles.setBounds(35,0,35,35)
+
         login.setBounds(1050,0,150,35)
         window.add(settings)
+        window.add(profiles)
         window.add(login)
+
 
         settings.addActionListener {
             settings(visible = true)
+            window.run { repaint() }
+        }
+        profiles.addActionListener {
+            profiles(visible = true)
             window.run { repaint() }
         }
     }

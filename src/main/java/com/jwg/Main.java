@@ -1,6 +1,7 @@
 package com.jwg;
 
 import com.jwg.jwgapi.logger;
+import com.jwg.launcher.getInstallations;
 
 import java.io.IOException;
 
@@ -24,5 +25,7 @@ public class Main {
         long initTook = System.currentTimeMillis()-initStartTime;
         logger.log(logFile, versionInt(version), project, 0, "Done! Took "+initTook+"ms");
         start();
+
+
     }
 }

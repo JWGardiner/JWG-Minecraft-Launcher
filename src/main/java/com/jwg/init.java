@@ -54,7 +54,11 @@ public class init {
     }
     public static void Init() {
         if (needsSetup) {
-            autoSetup.setup();
+            try {
+                autoSetup.setup();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
         try {
             String modloaderUpdate = readFile.fileRead("modloaderUpdate.cfg");
@@ -88,8 +92,18 @@ public class init {
                 logger.log(logFile, versionInt(version), project, 0, "Could not create template dir; does it already exist?");
             }
         }
+        String popupString = null;
         try {
-            JOptionPane.showMessageDialog( null, "About to check for Minecraft updates - This could take a minute." );
+            popupString = readFile.fileReadLine("settings.cfg", 0);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        popupString = popupString.substring(11);
+        boolean showPopup = !popupString.equals("true");
+        try {
+            if (!showPopup) {
+                JOptionPane.showMessageDialog(null, "About to check for Minecraft updates - This could take a minute.");
+            }
             clientInstaller.vanilla();
         } catch (IOException e) {
             throw new RuntimeException(e);

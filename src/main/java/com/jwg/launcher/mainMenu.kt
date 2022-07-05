@@ -1,8 +1,4 @@
-import java.awt.event.ActionListener
-import javax.swing.JButton
-import javax.swing.JDialog
-import javax.swing.JFrame
-import javax.swing.UIManager
+import javax.swing.*
 
 
 fun mainMenu() {
@@ -12,27 +8,31 @@ fun mainMenu() {
     val username = "JWG_"
 
     val settings = JButton("⚙️")
-    if (isLoggedIn){
-        loginText = username
+    loginText = if (isLoggedIn){
+        username
     } else {
-        loginText = "Login"
+        "Login"
     }
     val login = JButton(loginText)
     JFrame().also { window ->
+        window.defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
         window.title = "JWG Minecraft Launcher"
         window.setSize(1200, 700)
         window.layout = null
         window.setLocationRelativeTo(null)
         window.isVisible = true
-        window.isResizable = false;
+        window.isResizable = false
 
-        settings.setBounds(0,0,35,35);
-        login.setBounds(1050,0,150,35);
+        settings.setBounds(0,0,35,35)
+        login.setBounds(1050,0,150,35)
         window.add(settings)
         window.add(login)
+
+        settings.addActionListener {
+            settings(visible = true)
+            window.run { repaint() }
+        }
     }
-    settings.addActionListener(ActionListener { 
-        settings(visible = true)
-    })
+
 
 }

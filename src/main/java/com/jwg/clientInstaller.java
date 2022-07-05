@@ -17,10 +17,10 @@ import static java.lang.System.exit;
 
 public class clientInstaller {
     public static void vanilla() throws IOException {
-        URL versions = new URL("https://raw.githubusercontent.com/JWGardiner/JWG-Minecraft-Launcher/main/versions.md");
+        URL versions = new URL("https://raw.githubusercontent.com/JWGardiner/JWG-Minecraft-Launcher/main/minecraft/vanilla/versions");
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(versions.openStream()));
-        URL versionsDownload = new URL("https://raw.githubusercontent.com/JWGardiner/JWG-Minecraft-Launcher/main/versiondownload.md");
+        URL versionsDownload = new URL("https://raw.githubusercontent.com/JWGardiner/JWG-Minecraft-Launcher/main/minecraft/vanilla/versiondownload");
         BufferedReader in2 = new BufferedReader(
                 new InputStreamReader(versionsDownload.openStream()));
         String versionLine;

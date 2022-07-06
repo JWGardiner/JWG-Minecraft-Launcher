@@ -1,7 +1,6 @@
 import com.jwg.Main.*
 import com.jwg.jwgapi.logger.log
 import com.jwg.jwgapi.parseVersion.versionInt
-import com.jwg.jwgapi.readFile
 import com.jwg.jwgapi.writeFile.overwriteFile
 import com.jwg.launcher.getInstallations
 import java.awt.event.MouseAdapter
@@ -35,6 +34,7 @@ fun profiles(visible: Boolean) {
         profileMenu.add(
             refresh
         )
+
         add.setBounds(0, 0, 45, 35)
         remove.setBounds(45, 0, 45, 35)
         refresh.setBounds(90, 0, 45, 35)

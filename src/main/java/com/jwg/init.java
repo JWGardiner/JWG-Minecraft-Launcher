@@ -6,21 +6,30 @@ import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static com.jwg.Main.*;
 import static com.jwg.jwgapi.parseVersion.versionInt;
-import static com.jwg.jwgapi.swingUtils.configureJframe;
 import static java.lang.System.exit;
 
 public class init {
     static boolean needsSetup = false;
-    static boolean hasWifiConnection = false;
+    static boolean hasInternetConnection = false;
     static boolean updateModloader = false;
+
+    private static boolean checkInternetConnection() {
+        try {
+            URL url = new URL("https://piston-meta.mojang.com");
+            URLConnection connection = url.openConnection();
+            connection.connect();
+
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
 
     public static void preInit() {
         if(!sysinfo.getOs().equals("linux") && !sysinfo.getOs().equals("windows")) {
@@ -30,22 +39,21 @@ public class init {
         if(!new File("launcher").isDirectory()) {
             needsSetup = true;
         }
-        try {
-            URL checkConnectionGoogle = new URL("http://www.google.com");
-            URLConnection connection = checkConnectionGoogle.openConnection();
-            connection.connect();
-            logger.log(logFile, versionInt(version), project, 0, "User is connected to WiFi.");
-            hasWifiConnection = true;
-        } catch (IOException e) {
-            logger.log(logFile, versionInt(version), project, 1, "User is not connected to WiFi. - Or Google is down.");
+
+        hasInternetConnection = checkInternetConnection();
+        if (hasInternetConnection) {
+            logger.log(logFile, versionInt(version), project, 0, "User is connected to the internet.");
+        } else {
+            logger.log(logFile, versionInt(version), project, 1, "User is not connected to the internet (or Mojang's servers are down).");
         }
-        if (needsSetup && !hasWifiConnection) {
+
+        if (needsSetup && !hasInternetConnection) {
             try {
                 URL checkConnectionGit = new URL("http://www.github.com");
                 URLConnection connection = checkConnectionGit.openConnection();
                 connection.connect();
                 logger.log(logFile, versionInt(version), project, 0, "User is connected to WiFi. - Google is down.");
-                hasWifiConnection = true;
+                hasInternetConnection = true;
             } catch (IOException e) {
                 logger.log(logFile, versionInt(version), project, 1, "User is not connected to WiFi. - Or Google & GitHub are down.");
                 errorHandler.handleError("The launcher may be unable to auto-install; it cannot access google.com or github.com. Please check your WiFi connection - It will continue but may crash or have unpredictable behaviour without a WiFi connection! ", "JWG MC Pre-Init", versionInt(version), logFile);
@@ -70,27 +78,9 @@ public class init {
             exit(0);
         }
         if (updateModloader) {
-            try {
-                Path path = Paths.get("launcher/templates/fabric");
-                Files.createDirectories(path);
-                logger.log(logFile, versionInt(version), project, 0, "Created templates/fabric directory.");
-            } catch (IOException e) {
-                logger.log(logFile, versionInt(version), project, 0, "Could not create template dir; does it already exist?");
-            }
-            try {
-                Path path = Paths.get("launcher/templates/forge");
-                Files.createDirectories(path);
-                logger.log(logFile, versionInt(version), project, 0, "Created templates/forge directory.");
-            } catch (IOException e) {
-                logger.log(logFile, versionInt(version), project, 0, "Could not create template dir; does it already exist?");
-            }
-            try {
-                Path path = Paths.get("launcher/templates/quilt");
-                Files.createDirectories(path);
-                logger.log(logFile, versionInt(version), project, 0, "Created templates/quilt directory.");
-            } catch (IOException e) {
-                logger.log(logFile, versionInt(version), project, 0, "Could not create template dir; does it already exist?");
-            }
+            autoSetup.ensureDirExists("launcher/templates/fabric");
+            autoSetup.ensureDirExists("launcher/templates/forge");
+            autoSetup.ensureDirExists("launcher/templates/quilt");
         }
         String popupString = null;
         try {

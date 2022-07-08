@@ -52,7 +52,7 @@ public class init {
             }
         }
     }
-    public static void Init() {
+    public static void init() {
         if (needsSetup) {
             try {
                 autoSetup.setup();

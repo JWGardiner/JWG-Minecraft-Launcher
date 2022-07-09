@@ -52,7 +52,7 @@ public class clientInstaller {
                 logger.log(logFile, versionInt(version), project, 0, "Downloading Client jar: " + clientJarDownload);
                 URL website = new URL(clientJarDownload);
                 ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-                FileOutputStream fos = new FileOutputStream("launcher/vanilla/" + versionLine + "/client.jar");
+                FileOutputStream fos = new FileOutputStream("launcher/templates/" + versionLine + "/client.jar");
                 fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
             }
         }

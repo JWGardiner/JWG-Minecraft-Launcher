@@ -5,19 +5,15 @@ import javax.swing.*
 fun mainMenu() {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
     val isLoggedIn = false
-
     val username = "JWG_"
-
-    var loginText = "\t";
+    var loginText = "\t"
 
     val contributors = JButton("Contributors")
     val settings = JButton("⚙️")
     val profiles = JButton("+")
 
-    loginText = if (isLoggedIn){
-        username
-    } else {
-        "Login"
+    if (!isLoggedIn) {
+        loginText = "login"
     }
     val login = JButton(loginText)
     JFrame().also { window ->

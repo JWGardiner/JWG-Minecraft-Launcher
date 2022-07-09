@@ -18,8 +18,8 @@ fun profiles(visible: Boolean) {
     val remove = JButton("-")
     val refresh = JButton("⟳")
 
-    var installs = getInstallations.getAllInstalls()
-    var profileList = JList(installs)
+    val installs = getInstallations.getAllInstalls()
+    val profileList = JList(installs)
 
     JFrame().also { profileMenu ->
         profileMenu.title = "Profiles"

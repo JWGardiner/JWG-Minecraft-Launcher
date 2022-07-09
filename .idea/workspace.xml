@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83337a55-81cc-43f9-82a8-0aa4c2fc248c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jwg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jwg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jwg/autoSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jwg/autoSetup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jwg/init.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jwg/init.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jwg/launcher/mainMenu.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jwg/launcher/mainMenu.kt" afterDir="false" />
-    </list>
+    <list default="true" id="83337a55-81cc-43f9-82a8-0aa4c2fc248c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

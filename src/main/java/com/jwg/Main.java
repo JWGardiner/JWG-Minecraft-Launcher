@@ -18,7 +18,7 @@ public class Main {
         init.preInit();
         logger.log(logFile, versionInt(version), project, 0, "Pre Initialisation Finished!");
         logger.log(logFile, versionInt(version), project, 0, "Initialising...");
-        init.Init();
+        init.init();
         long initTook = System.currentTimeMillis()-initStartTime;
         logger.log(logFile, versionInt(version), project, 0, "Done! Took "+initTook+"ms");
         start();

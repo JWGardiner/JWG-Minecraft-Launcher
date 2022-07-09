@@ -6,15 +6,12 @@ import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static com.jwg.Main.*;
 import static com.jwg.jwgapi.parseVersion.versionInt;
-import static com.jwg.jwgapi.swingUtils.configureJframe;
 import static java.lang.System.exit;
 
 public class init {
@@ -92,7 +89,7 @@ public class init {
                 logger.log(logFile, versionInt(version), project, 0, "Could not create template dir; does it already exist?");
             }
         }
-        String popupString = null;
+        String popupString;
         try {
             popupString = readFile.fileReadLine("settings.cfg", 0);
         } catch (IOException e) {

@@ -25,3 +25,5 @@ The time on first launch depends on your WiFi speed; since it's downloading ever
 If it doesn't start loading, go to the issues tab and make a bug report, in the folder you made there should be a file called "Latest.log" which will tell us what happened
 
 You should also provide specifics like what you were doing to cause the crash etc.
+
+See the project's page: https://github.com/users/JWGardiner/projects/1/views/1

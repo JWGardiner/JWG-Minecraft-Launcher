@@ -2,8 +2,6 @@ package com.jwg;
 
 import com.jwg.jwgapi.errorHandler;
 import com.jwg.jwgapi.logger;
-import com.jwg.jwgapi.readFile;
-import com.jwg.jwgapi.writeFile;
 
 import javax.swing.*;
 import java.io.File;
@@ -16,7 +14,6 @@ import static com.jwg.Main.*;
 import static com.jwg.Main.project;
 import static com.jwg.jwgapi.parseVersion.versionInt;
 import static com.jwg.jwgapi.readFile.fileReadLine;
-import static com.jwg.jwgapi.swingUtils.configureJframe;
 import static com.jwg.jwgapi.writeFile.overwriteFile;
 import static java.lang.System.exit;
 

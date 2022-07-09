@@ -10,7 +10,6 @@ public class getInstallations {
     public static String[] getAllInstalls() {
         String[] installs = new String[100000];
 
-
         try (DirectoryStream<Path> stream = Files
                 .newDirectoryStream(Paths.get("launcher/profiles"))) {
             int i = 0;

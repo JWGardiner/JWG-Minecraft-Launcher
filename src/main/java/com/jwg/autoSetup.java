@@ -62,7 +62,7 @@ public class autoSetup {
             exit(0);
         }
         try {
-            Path path = Paths.get("launcher/templates/vanilla");
+            Path path = Paths.get("launcher/templates");
             Files.createDirectories(path);
             logger.log(logFile, versionInt(version), project, 0, "Created templates/vanilla directory.");
         } catch (IOException e) {

@@ -27,7 +27,7 @@ fun contributorlist(visible: Boolean) {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
     val gitLink = JButton("See full list")
     gitLink.setBounds(150, 435, 150, 35)
-
+    
     JFrame().also { contributors ->
         contributors.title = "Contributors"
         contributors.setSize(300, 500)

@@ -2,6 +2,8 @@ package com.jwg;
 
 import com.jwg.jwgapi.errorHandler;
 import com.jwg.jwgapi.logger;
+import com.jwg.jwgapi.readFile;
+import com.jwg.jwgapi.writeFile;
 
 import javax.swing.*;
 import java.io.File;
@@ -14,33 +16,41 @@ import static com.jwg.Main.*;
 import static com.jwg.Main.project;
 import static com.jwg.jwgapi.parseVersion.versionInt;
 import static com.jwg.jwgapi.readFile.fileReadLine;
+import static com.jwg.jwgapi.swingUtils.configureJframe;
 import static com.jwg.jwgapi.writeFile.overwriteFile;
 import static java.lang.System.exit;
 
 public class autoSetup {
+
+    // TODO move these to jwgapi
+    private static void ensureFileExists(String path) {
+        try {
+            File file = new File(path);
+            if (file.createNewFile()) {
+                logger.log(logFile, versionInt(version), project, 0, "Created file " + path + ".");
+            } else {
+                logger.log(logFile, versionInt(version), project, 0, "Couldn't create file " + path + ".");
+            }
+        } catch (IOException e) {
+            errorHandler.handleError(e + " Fatal crash", "JWG MC Pre-Init", versionInt(version), logFile);
+            exit(1);
+        }
+    }
+
+    public static void ensureDirExists(String path) {
+        try {
+            Path dir = Paths.get(path);
+            Files.createDirectories(dir);
+            logger.log(logFile, versionInt(version), project, 0, "Created directory " + path + ".");
+        } catch (IOException e) {
+            logger.log(logFile, versionInt(version), project, 0, "Could not create directory" + path + "; does it already exist?");
+        }
+    }
+
     public static void setup() throws IOException {
-        try {
-            File checkUpdateModldr = new File("modloaderUpdate.cfg");
-            if (checkUpdateModldr.createNewFile()) {
-                logger.log(logFile, versionInt(version), project, 0, "Created check modloader update file");
-            } else {
-                logger.log(logFile, versionInt(version), project, 1, "Couldn't create modloader update file");
-            }
-        } catch (IOException e) {
-            errorHandler.handleError(e+ " Fatal Crash", "JWG MC Pre-Init", versionInt(version), logFile);
-            exit(0);
-        }
-        try {
-            File checkUpdateModldr = new File("settings.cfg");
-            if (checkUpdateModldr.createNewFile()) {
-                logger.log(logFile, versionInt(version), project, 0, "Created check settings config file");
-            } else {
-                logger.log(logFile, versionInt(version), project, 1, "Couldn't create settings config file");
-            }
-        } catch (IOException e) {
-            errorHandler.handleError(e+ " Fatal Crash", "JWG MC Pre-Init", versionInt(version), logFile);
-            exit(0);
-        }
+        ensureFileExists("modloaderUpdate.cfg");
+        ensureFileExists("settings.cfg");
+
         overwriteFile(
                 "settings.cfg",
                 "startPopup=true\ncracked=false\nenableCustomJVM=false\ncrackedIGN=Cracked IGN\nminRamAlloc=2G\nmaxRamAlloc=512M\njrePath="+System.getProperty("java.home")+"\ncustomArgs=Custom Args"

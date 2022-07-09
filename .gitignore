@@ -1,6 +1,7 @@
 .idea/
 .gradle/
 build/
+run/**
 
 *.log
 *.jar

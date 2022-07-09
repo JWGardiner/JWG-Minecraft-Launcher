@@ -25,10 +25,10 @@ fun mainMenu() {
 
         window.isResizable = false
 
-        settings.setBounds(0,0,35,35)
-        profiles.setBounds(35,0,35,35)
-        login.setBounds(1050,0,150,35)
-        contributors.setBounds(900,0,150,35)
+        settings.setBounds(0,0,40,40)
+        profiles.setBounds(40,0,40,40)
+        login.setBounds(1050,0,150,40)
+        contributors.setBounds(900,0,150,40)
         window.add(settings)
         window.add(profiles)
         window.add(contributors)

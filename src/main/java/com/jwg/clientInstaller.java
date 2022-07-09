@@ -29,10 +29,10 @@ public class clientInstaller {
             //Create all the folders
             String clientJarDownload = in2.readLine();
             try {
-                File file = new File("launcher/templates/vanilla/"+versionLine);
+                File file = new File("launcher/templates/"+versionLine);
                 if (!file.exists()) {
                     try {
-                        Path path = Paths.get("launcher/templates/vanilla/"+versionLine);
+                        Path path = Paths.get("launcher/templates/"+versionLine);
                         Files.createDirectories(path);
 
                     } catch (IOException e) {
@@ -47,12 +47,12 @@ public class clientInstaller {
             }
 
             //Download the client jar
-            File clientJarFolder = new File("launcher/templates/vanilla/"+versionLine+"/client.jar");
+            File clientJarFolder = new File("launcher/templates/"+versionLine+"/client.jar");
             if (!clientJarFolder.exists()) {
                 logger.log(logFile, versionInt(version), project, 0, "Downloading Client jar: " + clientJarDownload);
                 URL website = new URL(clientJarDownload);
                 ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-                FileOutputStream fos = new FileOutputStream("launcher/templates/vanilla/" + versionLine + "/client.jar");
+                FileOutputStream fos = new FileOutputStream("launcher/vanilla/" + versionLine + "/client.jar");
                 fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
             }
         }

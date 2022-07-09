@@ -1,19 +1,32 @@
 package com.jwg.launcher
 
 import java.awt.Desktop
+import java.awt.Frame
 import java.net.URI
 import javax.swing.JButton
 import javax.swing.JFrame
+import javax.swing.JOptionPane
 import javax.swing.UIManager
+
+val CONTRIBUTORS = arrayOf("JWGardiner", "JustAPotota")
+
+//TODO: Fix bug where link doesn't open until the launcher is closed
+fun openUri(uri: String) {
+    try {
+        Desktop.getDesktop().browse(URI.create(uri))
+    } catch (e: UnsupportedOperationException) {
+        val f: Frame = JFrame()
+        JOptionPane.showMessageDialog(f,
+            "Could not open $uri:\n$e", "Error opening URI",
+            JOptionPane.ERROR_MESSAGE
+        )
+    }
+}
 
 fun contributorlist(visible: Boolean) {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
     val gitLink = JButton("See full list")
-    val jwgardiner = JButton("JWGardiner")
-    val justapotota = JButton("JustAPotota")
     gitLink.setBounds(150, 435, 150, 35)
-    jwgardiner.setBounds(75,25,150,35)
-    justapotota.setBounds(75,70,150,35)
 
     JFrame().also { contributors ->
         contributors.title = "Contributors"
@@ -23,22 +36,22 @@ fun contributorlist(visible: Boolean) {
         contributors.isVisible = visible
         contributors.isResizable = false
         contributors.add(gitLink)
-        contributors.add(jwgardiner)
-        contributors.add(justapotota)
+
         gitLink.addActionListener {
-            //TODO: Fix bug where link doesn't open until the launcher is closed
-            Desktop.getDesktop().browse(URI.create("https://github.com/JWGardiner/JWG-Minecraft-Launcher/graphs/contributors"))
+            openUri("https://github.com/JWGardiner/JWG-Minecraft-Launcher/graphs/contributors")
             contributors.run { repaint() }
         }
-        jwgardiner.addActionListener {
-            //TODO: Fix bug where link doesn't open until the launcher is closed
-            Desktop.getDesktop().browse(URI.create("https://github.com/JWGardiner"))
-            contributors.run { repaint() }
-        }
-        justapotota.addActionListener {
-            //TODO: Fix bug where link doesn't open until the launcher is closed
-            Desktop.getDesktop().browse(URI.create("https://github.com/JustAPotota"))
-            contributors.run { repaint() }
+
+        for ((i, contributor) in CONTRIBUTORS.withIndex()) {
+            val contribButton = JButton(contributor)
+            contribButton.setBounds(75, 25 + i*45, 150, 35)
+
+            contributors.add(contribButton)
+
+            contribButton.addActionListener {
+                openUri("https://github.com/$contributor")
+                contributors.run { repaint() }
+            }
         }
     }
 }

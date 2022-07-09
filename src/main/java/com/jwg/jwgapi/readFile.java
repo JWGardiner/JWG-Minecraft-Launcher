@@ -10,7 +10,6 @@ public class readFile {
         return Files.readString(Paths.get(filePath));
     }
     public static String fileReadLine(String filepath, int line) throws IOException {
-        String file = Files.readAllLines(Paths.get(filepath)).get(line);
-        return file;
+        return Files.readAllLines(Paths.get(filepath)).get(line);
     }
 }

@@ -14,7 +14,6 @@ fun contributorlist(visible: Boolean) {
     gitLink.setBounds(150, 435, 150, 35)
     jwgardiner.setBounds(75,25,150,35)
     justapotota.setBounds(75,70,150,35)
-
     JFrame().also { contributors ->
         contributors.title = "Contributors"
         contributors.setSize(300, 500)

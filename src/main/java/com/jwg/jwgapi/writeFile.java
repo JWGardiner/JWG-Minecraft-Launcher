@@ -18,13 +18,14 @@ public class writeFile {
         {
             File file = new File(filePath);
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line = "", oldtext = "";
+            String line = "";
+            StringBuilder oldtext = new StringBuilder();
             while((line = reader.readLine()) != null)
             {
-                oldtext += line + "\r\n";
+                oldtext.append(line).append("\r\n");
             }
             reader.close();
-            String newtext = oldtext.replaceAll(textToReplace, finalText);
+            String newtext = oldtext.toString().replaceAll(textToReplace, finalText);
 
             FileWriter writer = new FileWriter(filePath);
             writer.write(newtext);writer.close();

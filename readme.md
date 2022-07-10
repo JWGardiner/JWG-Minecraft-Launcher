@@ -18,9 +18,9 @@ The time on first launch depends on your WiFi speed; since it's downloading ever
 
 - Firstly install Java 16 or higher, if you've done modding on 1.17+ you probably have it installed already! (https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - Make a folder on your computer somewhere, it doesn't really matter where, I recommend somewhere like appdata, or documents, you can name the folder what you want.
-- Right click the jar file > Create shortcut and drag the shortcut to your desktop
-- Double click the shortcut
-- It should start loading
+- Go to the releases tab on the right, and download the version you want into that folder.
+- Right click file "launcher.jar" > Create shortcut and drag the shortcut to your desktop
+- Run the shortcut or jar file, and you should see it starting to load.
 
 If it doesn't start loading, go to the issues tab and make a bug report, in the folder you made there should be a file called "Latest.log" which will tell us what happened
 

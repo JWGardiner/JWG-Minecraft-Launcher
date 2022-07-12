@@ -75,9 +75,9 @@ public class init {
             exit(0);
         }
         if (updateModloader) {
-            autoSetup.ensureDirExists("launcher/templates/fabric");
-            autoSetup.ensureDirExists("launcher/templates/forge");
-            autoSetup.ensureDirExists("launcher/templates/quilt");
+            autoSetup.ensureDirExists("launcher/modloaders/fabric");
+            autoSetup.ensureDirExists("launcher/modloaders/forge");
+            autoSetup.ensureDirExists("launcher/modloaders/quilt");
         }
         String popupString = null;
         try {

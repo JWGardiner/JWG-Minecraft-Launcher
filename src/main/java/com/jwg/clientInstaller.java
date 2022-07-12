@@ -3,6 +3,7 @@ package com.jwg;
 import com.jwg.jwgapi.errorHandler;
 import com.jwg.jwgapi.logger;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.URL;
 import java.nio.channels.Channels;
@@ -17,7 +18,9 @@ import static com.jwg.jwgapi.parseVersion.versionInt;
 import static java.lang.System.exit;
 
 public class clientInstaller {
+
     public static void vanilla() throws IOException {
+
         URL versions = new URL("https://raw.githubusercontent.com/JWGardiner/JWG-Minecraft-Launcher/main/minecraft/vanilla/versions");
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(versions.openStream()));
@@ -45,7 +48,6 @@ public class clientInstaller {
                 errorHandler.handleError("Couldn't update: No connection? Starting anyway..", "JWG MC Pre-Init", versionInt(version), logFile);
                 start();
             }
-
             //Download the client jar
             File clientJarFolder = new File("launcher/templates/"+versionLine+"/client.jar");
             if (!clientJarFolder.exists()) {
@@ -54,6 +56,7 @@ public class clientInstaller {
                 ReadableByteChannel rbc = Channels.newChannel(website.openStream());
                 FileOutputStream fos = new FileOutputStream("launcher/templates/" + versionLine + "/client.jar");
                 fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+
             }
         }
         in.close();

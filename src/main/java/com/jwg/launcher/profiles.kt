@@ -1,7 +1,16 @@
+import com.jwg.Main
+import com.jwg.jwgapi.errorHandler
+import com.jwg.jwgapi.logger
+import com.jwg.jwgapi.parseVersion
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
 import java.io.File
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
+import java.nio.file.StandardCopyOption
 import javax.swing.*
 
 
@@ -19,10 +28,11 @@ fun profiles(visible: Boolean) {
 
     //Configurable options
     val gameTypes = "launcher/templates"
+    val modloaders = "launcher/modloaders"
     val profiles = "launcher/profiles"
 
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
-    val listOfGameTypes: Array<out File>? = File(gameTypes).listFiles(); var j = 0; var k = 0
+    val listOfGameTypes: Array<out File>? = File(modloaders).listFiles(); var j = 0; var k = 0
     for (i in listOfGameTypes!!) {
         j += 1
     }
@@ -70,7 +80,7 @@ fun profiles(visible: Boolean) {
             override fun mouseClicked(mouseEvent: MouseEvent) {
                 gameType = gameSoftwareList.selectedValue.toString()
 
-                val listOfVersionTypes: Array<out File>? = File("$gameTypes/$gameType/").listFiles(); j = 0; k = 0
+                val listOfVersionTypes: Array<out File>? = File("$gameTypes/").listFiles(); j = 0; k = 0
                 for (i in listOfVersionTypes!!) {
                     j += 1
                 }
@@ -92,7 +102,34 @@ fun profiles(visible: Boolean) {
             }
         }
         confirm.addActionListener {
-
+            val profileName = name.text
+            try {
+                val path = Paths.get("$profiles/$profileName/client")
+                Files.createDirectories(path)
+                logger.log(
+                    Main.logFile,
+                    parseVersion.versionInt(Main.version),
+                    Main.project,
+                    0,
+                    "Created a new profile directory."
+                )
+            } catch (e: IOException) {
+                errorHandler.handleError(
+                    "$e Could not create directory. Try going into the folder and removing everything except jar files.",
+                    "JWG MC Init",
+                    parseVersion.versionInt(
+                        Main.version
+                    ),
+                    Main.logFile
+                )
+                System.exit(0)
+            }
+            gameVer = versionList.selectedValue.toString()
+            Files.copy(Path.of("$gameTypes/$gameVer/client.jar"), Path.of("$profiles/$profileName/client/client.jar"), StandardCopyOption.REPLACE_EXISTING);
+            JOptionPane.showMessageDialog(null,
+                "Created new profile for " + gameVer + ", " + gameSoftwareList.selectedValue.toString() + ".",
+                "Created Profile",
+                JOptionPane.PLAIN_MESSAGE);
         }
     }
 }

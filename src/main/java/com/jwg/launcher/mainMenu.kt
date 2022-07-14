@@ -31,15 +31,15 @@ fun getConfig(cfg: String): Array<String> {
     val software: String
     val created: String
     if (cfg == "None") {
-        name = "Name = "
-        version = "Version = "
-        software = "Software = "
-        created = "Created = "
+        name = "Name: "
+        version = "Version: "
+        software = "Software: "
+        created = "Created: "
     } else {
-        name = fileReadLine(cfg, 0)
-        version = fileReadLine(cfg, 1)
-        software = fileReadLine(cfg, 2)
-        created = fileReadLine(cfg, 3)
+        name = fileReadLine(cfg, 0).replace(" = ", ": ")
+        version = fileReadLine(cfg, 1).replace(" = ", ": ")
+        software = fileReadLine(cfg, 2).replace(" = ", ": ")
+        created = fileReadLine(cfg, 3).replace(" = ", ": ")
     }
     return arrayOf(name, version, software, created)
 }

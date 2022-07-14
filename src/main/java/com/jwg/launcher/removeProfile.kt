@@ -2,7 +2,6 @@ package com.jwg.launcher
 
 import com.jwg.Main.*
 import com.jwg.jwgapi.logger
-import com.jwg.jwgapi.parseVersion
 import com.jwg.jwgapi.parseVersion.versionInt
 import scanFiles
 import java.io.File

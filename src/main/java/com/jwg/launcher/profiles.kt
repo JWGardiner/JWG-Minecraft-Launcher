@@ -152,7 +152,7 @@ fun profiles(visible: Boolean) {
                     }
                     "Quilt" -> {
                         //Download quilt icon
-                        URL("https://quiltmc.org/assets/img/logo.svg")
+                        URL("https://github.com/QuiltMC/art/raw/master/brand/1024png/quilt_logo_transparent.png")
                     }
                     else -> {
                         //Download pack.png

@@ -6,11 +6,17 @@ import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
 import java.io.File
+import java.io.FileOutputStream
+import java.io.FileWriter
 import java.io.IOException
+import java.net.URL
+import java.nio.channels.Channels
+import java.nio.channels.ReadableByteChannel
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
+import java.time.LocalDate
 import javax.swing.*
 
 
@@ -95,7 +101,7 @@ fun profiles(visible: Boolean) {
 
             }
         }
-        gameSoftwareList.addMouseListener(gsMouseListener);
+        gameSoftwareList.addMouseListener(gsMouseListener)
         val verMouseListener: MouseListener = object : MouseAdapter() {
             override fun mouseClicked(mouseEvent: MouseEvent) {
                 gameVer = versionList.selectedValue.toString()
@@ -103,6 +109,7 @@ fun profiles(visible: Boolean) {
         }
         confirm.addActionListener {
             val profileName = name.text
+            val gameSoftware = gameSoftwareList.selectedValue.toString()
             try {
                 val path = Paths.get("$profiles/$profileName/client")
                 Files.createDirectories(path)
@@ -124,13 +131,45 @@ fun profiles(visible: Boolean) {
                 )
                 System.exit(0)
             }
+            val creationTime = LocalDate.now().toString()
             gameVer = versionList.selectedValue.toString()
-            Files.copy(Path.of("$gameTypes/$gameVer/client.jar"), Path.of("$profiles/$profileName/client/client.jar"), StandardCopyOption.REPLACE_EXISTING);
+            val profileInfo = File("$profiles/$profileName/profile.cfg")
+            profileInfo.createNewFile()
+            try {
+                val configWriter = FileWriter("$profiles/$profileName/profile.cfg")
+                configWriter.write("Name = $profileName\nVersion = $gameVer\nSoftware = $gameSoftware\nCreated = $creationTime")
+                configWriter.close()
+            } catch (_: IOException) {}
+            try {
+                val url: URL = when (gameSoftware) {
+                    "Fabric" -> {
+                        //Download fabric icon
+                        URL("https://i.imgur.com/CqLSMEQ.png")
+                    }
+                    "Forge" -> {
+                        //Download forge icon
+                        URL("https://files.minecraftforge.net/static/images/apple-touch-icon.png")
+                    }
+                    "Quilt" -> {
+                        //Download quilt icon
+                        URL("https://quiltmc.org/assets/img/logo.svg")
+                    }
+                    else -> {
+                        //Download pack.png
+                        URL("https://packpng.com/static/pack.png")
+                    }
+                }
+                val rbc: ReadableByteChannel = Channels.newChannel(url.openStream())
+                val fos = FileOutputStream("$profiles/$profileName/icon.png")
+                fos.channel.transferFrom(rbc, 0, Long.MAX_VALUE)
+            } catch (_: IOException){ }
+            Files.copy(Path.of("$gameTypes/$gameVer/client.jar"), Path.of("$profiles/$profileName/client/client.jar"), StandardCopyOption.REPLACE_EXISTING)
             JOptionPane.showMessageDialog(null,
-                "Created new profile for " + gameVer + ", " + gameSoftwareList.selectedValue.toString() + ".",
+                "Created new profile for $gameVer, $gameSoftware.",
                 "Created Profile",
-                JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.PLAIN_MESSAGE)
         }
+
     }
 }
 

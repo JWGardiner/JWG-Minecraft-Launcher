@@ -109,7 +109,14 @@ public class autoSetup {
             errorHandler.handleError(e + " Could not create directory. Try going into the folder and removing everything except jar files.", "JWG MC Init", versionInt(version), logFile);
             exit(0);
         }
-
+        try {
+            Path path = Paths.get("launcher/assets");
+            Files.createDirectories(path);
+            logger.log(logFile, versionInt(version), project, 0, "Created launcher/modloaders directory.");
+        } catch (IOException e) {
+            errorHandler.handleError(e + " Could not create directory. Try going into the folder and removing everything except jar files.", "JWG MC Init", versionInt(version), logFile);
+            exit(0);
+        }
         logger.log(logFile, versionInt(version), project, 0, "Created all directories!");
         int reply = JOptionPane.showConfirmDialog(null, "Do you want to check for updated modloaders? (This only appears once, it's recommended to check for updated modloaders!)", "Update Modloaders?", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {

@@ -75,6 +75,7 @@ public class init {
             exit(0);
         }
         if (updateModloader) {
+            autoSetup.ensureDirExists("launcher/assets");
             autoSetup.ensureDirExists("launcher/modloaders/fabric");
             autoSetup.ensureDirExists("launcher/modloaders/forge");
             autoSetup.ensureDirExists("launcher/modloaders/quilt");

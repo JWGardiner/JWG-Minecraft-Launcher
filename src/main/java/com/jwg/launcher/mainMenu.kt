@@ -1,6 +1,14 @@
+import com.jwg.Main.version
+import com.jwg.jwgapi.readFile.fileReadLine
 import com.jwg.launcher.contributorlist
+import java.awt.Image
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
+import java.awt.event.MouseListener
+import java.awt.image.BufferedImage
 import java.io.File
 import javax.swing.*
+
 
 fun scanFiles(dir: File): Array<String?> {
     val listOfFiles: Array<File> = dir.listFiles()!!
@@ -17,6 +25,24 @@ fun scanFiles(dir: File): Array<String?> {
 
     return listOfFileNames
 }
+fun getConfig(cfg: String): Array<String> {
+    val name: String
+    val version: String
+    val software: String
+    val created: String
+    if (cfg == "None") {
+        name = "Name = "
+        version = "Version = "
+        software = "Software = "
+        created = "Created = "
+    } else {
+        name = fileReadLine(cfg, 0)
+        version = fileReadLine(cfg, 1)
+        software = fileReadLine(cfg, 2)
+        created = fileReadLine(cfg, 3)
+    }
+    return arrayOf(name, version, software, created)
+}
 fun mainMenu() {
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
 
@@ -27,9 +53,14 @@ fun mainMenu() {
     var loginText = "\t"
 
     val profileList = JList(scanFiles(File(profileFolder)))
+    val profileCFG = JList(getConfig("None"))
+    val infoText = JLabel("JWG Minecraft Launcher: Version $version")
+
+
     val contributors = JButton("Contributors")
     val settings = JButton("⚙️")
-    val profiles = JButton("+")
+    val profiles = JButton("➕")
+    val refresh = JButton("\uD83D\uDD04")
 
     if (!isLoggedIn) {
         loginText = "login"
@@ -40,16 +71,27 @@ fun mainMenu() {
         window.title = "JWG Minecraft Launcher"
         window.setSize(1200, 700)
         window.layout = null
+        val icon = JLabel()
+        icon.setBounds(335, 190, 245, 245)
+        var profIco: ImageIcon
         window.setLocationRelativeTo(null)
+        window.add(icon)
+
 
         window.isResizable = false
-        profileList.setBounds(55, 55,1090,570)
+        profileList.setBounds(55, 75,245,550)
+        profileCFG.setBounds(335, 75,245,100)
         settings.setBounds(0,0,40,40)
         profiles.setBounds(40,0,40,40)
+        refresh.setBounds(80,0,40,40)
         login.setBounds(1050,0,150,40)
         contributors.setBounds(900,0,150,40)
+        infoText.setBounds(15, 625, 350, 40)
+        window.add(infoText)
+        window.add(profileCFG)
         window.add(settings)
         window.add(profiles)
+        window.add(refresh)
         window.add(contributors)
         window.add(login)
         window.add(profileList)
@@ -67,6 +109,21 @@ fun mainMenu() {
             contributorlist(visible = true)
             window.run { repaint() }
         }
+        refresh.addActionListener {
+            profileList.setListData(scanFiles(File(profileFolder)))
+            window.run { repaint() }
+
+        }
+        val profileListMouseListener: MouseListener = object : MouseAdapter() {
+            override fun mouseClicked(mouseEvent: MouseEvent) {
+                val profile = profileList.selectedValue.toString()
+                profileCFG.setListData(getConfig("launcher/profiles/$profile/profile.cfg"))
+                profIco = ImageIcon(ImageIcon("launcher/profiles/$profile/icon.png").image.getScaledInstance(245, 245, Image.SCALE_SMOOTH))
+                icon.icon = profIco
+                profileCFG.updateUI()
+            }
+        }
+        profileList.addMouseListener(profileListMouseListener);
     }
 
 

@@ -140,6 +140,8 @@ fun mainMenu() {
 
         val profileListMouseListener: MouseListener = object : MouseAdapter() {
             override fun mouseClicked(mouseEvent: MouseEvent) {
+                if (profileList.selectedValue == null) return
+
                 val profile = profileList.selectedValue.toString()
                 profileCFG.setListData(getConfig("launcher/profiles/$profile/profile.cfg"))
                 profIco = ImageIcon(ImageIcon("launcher/profiles/$profile/icon.png").image.getScaledInstance(245, 245, Image.SCALE_SMOOTH))

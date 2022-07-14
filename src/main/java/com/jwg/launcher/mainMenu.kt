@@ -1,6 +1,8 @@
 import com.jwg.Main.version
 import com.jwg.jwgapi.readFile.fileReadLine
 import com.jwg.launcher.contributorlist
+import com.jwg.launcher.removeProfile
+import com.jwg.launcher.uploadProfile
 import java.awt.Image
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
@@ -59,8 +61,11 @@ fun mainMenu() {
 
     val contributors = JButton("Contributors")
     val settings = JButton("⚙️")
-    val profiles = JButton("➕")
     val refresh = JButton("\uD83D\uDD04")
+    val profiles = JButton("➕")
+    val rmProfile = JButton("➖")
+    val uploadProfile = JButton("⬆️")
+
 
     if (!isLoggedIn) {
         loginText = "login"
@@ -81,17 +86,25 @@ fun mainMenu() {
         window.isResizable = false
         profileList.setBounds(55, 75,245,550)
         profileCFG.setBounds(335, 75,245,100)
+
         settings.setBounds(0,0,40,40)
-        profiles.setBounds(40,0,40,40)
-        refresh.setBounds(80,0,40,40)
+        refresh.setBounds(40,0,40,40)
+        profiles.setBounds(80,0,40,40)
+        rmProfile.setBounds(120,0,40,40)
+        uploadProfile.setBounds(160,0,40,40)
+
         login.setBounds(1050,0,150,40)
         contributors.setBounds(900,0,150,40)
         infoText.setBounds(15, 625, 350, 40)
         window.add(infoText)
         window.add(profileCFG)
+
         window.add(settings)
-        window.add(profiles)
         window.add(refresh)
+        window.add(profiles)
+        window.add(rmProfile)
+        window.add(uploadProfile)
+
         window.add(contributors)
         window.add(login)
         window.add(profileList)
@@ -101,19 +114,30 @@ fun mainMenu() {
             settings(visible = true)
             window.run { repaint() }
         }
-        profiles.addActionListener {
-            profiles(visible = true)
-            window.run { repaint() }
-        }
-        contributors.addActionListener {
-            contributorlist(visible = true)
-            window.run { repaint() }
-        }
         refresh.addActionListener {
             profileList.setListData(scanFiles(File(profileFolder)))
             window.run { repaint() }
 
         }
+
+        profiles.addActionListener {
+            profiles(visible = true)
+            window.run { repaint() }
+        }
+        rmProfile.addActionListener {
+            removeProfile(visible = true)
+            window.run { repaint() }
+        }
+        uploadProfile.addActionListener {
+            uploadProfile(visible = true)
+            window.run { repaint() }
+        }
+
+        contributors.addActionListener {
+            contributorlist(visible = true)
+            window.run { repaint() }
+        }
+
         val profileListMouseListener: MouseListener = object : MouseAdapter() {
             override fun mouseClicked(mouseEvent: MouseEvent) {
                 val profile = profileList.selectedValue.toString()

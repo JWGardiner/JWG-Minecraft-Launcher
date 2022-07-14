@@ -18,14 +18,14 @@ import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
 import java.time.LocalDate
 import javax.swing.*
+import kotlin.system.exitProcess
 
 
-fun profiles(visible: Boolean) {
+public fun profiles(visible: Boolean) {
     //Default folder launcher/profiles/
 
     //TODO LIST:
     //TODO: Make users able to change the default profile folder
-    //TODO: Let users have custom icons for their profiles
 
     //New profile options
     var gameType: String
@@ -129,7 +129,7 @@ fun profiles(visible: Boolean) {
                     ),
                     Main.logFile
                 )
-                System.exit(0)
+                exitProcess(0)
             }
             val creationTime = LocalDate.now().toString()
             gameVer = versionList.selectedValue.toString()

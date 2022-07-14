@@ -4,6 +4,7 @@ import com.jwg.Main.*
 import com.jwg.jwgapi.logger
 import com.jwg.jwgapi.parseVersion.versionInt
 import scanFiles
+import java.awt.Color
 import java.io.File
 import javax.swing.*
 
@@ -32,6 +33,7 @@ fun removeProfile(visible: Boolean) {
 
 
         rmProfMenu.add(confirm)
+        confirm.foreground = Color.WHITE
         rmProfMenu.add(profileListScrollPane)
 
         confirm.setBounds(160, 10, 139, 35)

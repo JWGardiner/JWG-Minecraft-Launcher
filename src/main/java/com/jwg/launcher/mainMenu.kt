@@ -3,6 +3,7 @@ import com.jwg.jwgapi.readFile.fileReadLine
 import com.jwg.launcher.contributorlist
 import com.jwg.launcher.removeProfile
 import com.jwg.launcher.uploadProfile
+import java.awt.Color
 import java.awt.Image
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
@@ -72,6 +73,7 @@ fun mainMenu() {
     }
     val login = JButton(loginText)
     JFrame().also { window ->
+
         window.defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
         window.title = "JWG Minecraft Launcher"
         window.setSize(1200, 700)
@@ -108,6 +110,16 @@ fun mainMenu() {
         window.add(contributors)
         window.add(login)
         window.add(profileList)
+
+        settings.foreground = Color.WHITE
+        refresh.foreground = Color.WHITE
+        profiles.foreground = Color.WHITE
+        rmProfile.foreground = Color.WHITE
+        uploadProfile.foreground = Color.WHITE
+        contributors.foreground = Color.WHITE
+        login.foreground = Color.WHITE
+        profileList.foreground = Color.WHITE
+
         window.isVisible = true
 
         settings.addActionListener {
@@ -129,7 +141,7 @@ fun mainMenu() {
             window.run { repaint() }
         }
         uploadProfile.addActionListener {
-            uploadProfile(visible = true)
+            uploadProfile()
             window.run { repaint() }
         }
 

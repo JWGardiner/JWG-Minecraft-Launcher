@@ -10,7 +10,7 @@ import javax.swing.JFileChooser
 import javax.swing.JFrame
 
 
-fun uploadProfile(visible: Boolean) {
+fun uploadProfile() {
     val tmpZip = File("launcher/tmp.zip")
     val tmpZipF = File("launcher/tmp")
 

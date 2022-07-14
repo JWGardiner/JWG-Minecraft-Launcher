@@ -2,6 +2,7 @@ import com.jwg.Main
 import com.jwg.jwgapi.errorHandler
 import com.jwg.jwgapi.logger
 import com.jwg.jwgapi.parseVersion
+import java.awt.Color
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
@@ -68,6 +69,9 @@ public fun profiles(visible: Boolean) {
 
     confirm.setBounds(10, 10, 139, 35)
     name.setBounds(160, 10, 139, 35)
+
+    confirm.foreground = Color.WHITE
+    name.foreground = Color.WHITE
 
     JFrame().also { profileMenu ->
         profileMenu.title = "Profiles"

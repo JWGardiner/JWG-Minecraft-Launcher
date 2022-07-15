@@ -125,6 +125,15 @@ fun settings(visible: Boolean) {
             jrePath = fileReadLine("settings.cfg", 6).substring(8)
             customArgs = fileReadLine("settings.cfg", 7).substring(11)
 
+            startPopupI.text = startPopup
+            crackedI.text = cracked
+            enableCustomJVMI.text = enableCustomJVM
+            crackedIGNI.text = crackedIGN
+            minRamAllocI.text = minRamAlloc
+            maxRamAllocI.text = maxRamAlloc
+            jrePathI.text = jrePath
+            customArgsI.text = customArgs
+
             settingsMenu.repaint()
         }
         saveSettings.addActionListener {

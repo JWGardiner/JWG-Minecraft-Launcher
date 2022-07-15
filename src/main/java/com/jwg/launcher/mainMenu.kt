@@ -2,6 +2,7 @@ import com.jwg.Main.version
 import com.jwg.jwgapi.readFile.fileReadLine
 import com.jwg.launcher.contributorlist
 import com.jwg.launcher.removeProfile
+import com.jwg.launcher.settings
 import com.jwg.launcher.uploadProfile
 import java.awt.Color
 import java.awt.Image

@@ -27,3 +27,9 @@ If it doesn't start loading, go to the issues tab and make a bug report, in the 
 You should also provide specifics like what you were doing to cause the crash etc.
 
 See the project's page: https://github.com/users/JWGardiner/projects/1/views/1
+
+## Support
+
+To support me/the project, you can donate by the link on the right, or:
+
+- https://Ko-Fi.com/JWGardiner
